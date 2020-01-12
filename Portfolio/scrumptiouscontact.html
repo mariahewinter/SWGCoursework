@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Name: Mariah Winter
+  Date Created: November 8th 2019
+  Most Recent Revision: January 11th 2019
+  -->
+  <head>
+    <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="restaurantStyles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Contact Us</title>
+    <link href="restaurantStyles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+                <style>
+/* code for form text alignment found on: https%3A%2F%2Fstackoverflow.com%2Fquestions%2F46338724%2Fmake-label-align-right-using-bootstrap-4-modal%2F46338789%2346338789&h=AT1G33tXTokghKuyt4khhhsuosGWEuHndnTd3tOe0pfOlH5zXvHY_C04PIndOaLc6KN8f-30p5407rpvWCkVRw8nUG-TvNmbAp1CfZyMMvOKuwOF1OVIiuEJVLQmMRaoea4
+*/
+div.form-inline label.col-md-4 {
+                                justify-content: flex-end;
+                                font-weight: bold;
+}
+                </style>
+    </head>
+    <body>
+      <header>
+  <h1>SCRUMPTIOUS!</h1>
+    </header>
+  <hr />
+    <nav>
+    <hr />
+  <p> <a href="scrumptioushome.html"><i class="fa fa-home"></i></a>
+      <a href="scrumptiousmenu.html">Menu</a>
+      <a href="scrumptiouscontact.html">Contact Us</a></p>
+    <hr />
+    </nav>
+  <hr />
+  <body>
+
+    <form>
+      <div class="form-inline">
+        <label for="name" class="col-md-4" id="namealign">Name:</label>
+        <input type="nametype" class="form-control col-md-4" id="nameinput" aria-describedby="entername" placeholder="Enter Name">
+      </div>
+      <div class="form-inline">
+        <label for="email" class="col-md-4">Email:</label>
+        <input type="emailtype" class="form-control col-md-4" id="emailinput" placeholder="Enter Email">
+      </div>
+      <div class="form-inline">
+        <label for="phone" class="col-md-4">Phone:</label>
+        <input type="phonetype" class="form-control col-md-4" id="phoneinput" placeholder="Enter Phone">
+      </div>
+      <div class="form-inline">
+    <label for="reasonforinquiry" class="col-md-4">Reason For Inquiry:</label>
+    <select class="form-control col-md-4" id="reasoninput">
+      <option>Catering</option>
+      <option>Private Party</option>
+      <option>Feedback</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-inline">
+    <label for="additionalinformation" class="col-md-4">Additional Information:</label>
+    <textarea class="form-control col-md-4" id="additionalinformationinput" rows="3"></textarea>
+  </div>
+
+  <label for="beentoscrumptious" class="form-inline-label col-md-4">Have you been to the restaurant?</label>
+  <div class="form-check form-check-inline col-md-2">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="no" value="option1">
+  <label class="form-check-label" for="no">No</label>
+</div>
+<div class="form-check form-check-inline col-md-2">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="yes" value="option2">
+  <label class="form-check-label" for="yes">Yes</label>
+</div><br />
+
+<label for="bestdays" class="form-inline-label col-md-4">Best days to contact you:</label>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="monday" value="option1">
+  <label class="form-check-label" for="monday">M</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="tuesday" value="option2">
+  <label class="form-check-label" for="tuesday">T</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="wednesday" value="option1">
+  <label class="form-check-label" for="wednesday">W</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="thursday" value="option2">
+  <label class="form-check-label" for="thursday">Th</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="friday" value="option1">
+  <label class="form-check-label" for="friday">F</label>
+  </div>
+</div><br />
+<button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+
+
+
+
+
+<!--  <div class="forms">
+    <form action="submit.html" method="POST">
+      <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br />
+
+    <label for="email">Email:</label>
+  <input type="text" id="email" name="email"> <br />
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone"> <br />
+
+
+    <label for="contact">Reason for Inquiry:</label><br />
+    <select id="contact" name="contact">
+      <option value="default" selected>Catering</option>
+      <option value="private">Private Party</option>
+      <option value="feedback">Feedback</option>
+      <option value="other">Other</option>
+  </select><br />
+
+  <label for="info">Additional Information:</label><br />
+    <textarea id="info" name="info">
+    </textarea><br />
+<fieldset>
+  <legend>Have you been to the restaurant?</legend>
+
+    <input type="radio" id="choice1" name="questionnaire" value="yes">
+      <label for="choice1">No</label>
+    <input type="radio" id="choice2" name="questionnaire" value="no">
+      <label for="choice2">Yes</label><br />
+</fieldset>
+
+<fieldset>
+  <legend>Best days to contact you:</legend>
+
+    <input type="checkbox" id="monday" name="contactday" value="monday">
+      <label for="monday">M</label>
+    <input type="checkbox" id="tuesday" name="contactday" value="tuesday">
+      <label for="tuesday">T</label>
+    <input type="checkbox" id="wednesday" name="contactday" value="wednesday">
+      <label for="wednesday">W</label>
+    <input type="checkbox" id="thursday" name="contactday" value="thursday">
+      <label for="thursday">Th</label>
+    <input type="checkbox" id="friday" name="contactday" value="friday">
+      <label for="friday">F</label><br />
+</fieldset>
+
+  <input type="submit" name="submit" value="Send Request"<br /><br />
+</div> -->
+</body>
+  <footer>
+  <hr />
+  <p>1045 Ethereal Way Bloomington, Mn 55431<br />
+  507.525.2260</p>
+  </footer>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    </body>
+  </html>
