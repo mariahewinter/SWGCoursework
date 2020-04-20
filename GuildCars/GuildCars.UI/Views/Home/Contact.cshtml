@@ -1,0 +1,74 @@
+﻿@model GuildCars.Models.Tables.Contact
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h3>Contact Us</h3>
+
+<div class="container">
+    <div class="row col-md-12">
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "well col-md-6", role = "form" }))
+        {
+            <div class="form-group col-md-12">
+                @Html.LabelFor(c => c.Name, new { @class = "col-md-2" })
+                @Html.TextBoxFor(c => c.Name, new { @class = "form-control col-md-10", required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(c => c.Name)</div>
+
+                @*<label for="contactName" class="col-md-2">Name:</label>
+                    <input type="text"
+                       class="form-control col-md-10"
+                       id="contactName" />*@
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(c => c.Email, new { @class = "col-md-2" })
+                @Html.TextBoxFor(c => c.Email, new { @class = "form-control col-md-10" })
+
+
+                @*<label for="contactEmail" class="col-md-2">Email:</label>
+                    <input type="text"
+                           class="form-control col-md-10"
+                           id="contactEmail" />*@
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(c => c.Phone, new { @class = "col-md-2" })
+                @Html.TextBoxFor(c => c.Phone, new { @class = "form-control col-md-10" })
+
+                @*<label for="contactPhone" class="col-md-2">Phone:</label>
+                    <input type="text"
+                           class="form-control col-md-10"
+                           id="contactPhone" />*@
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(c => c.Message, new { @class = "col-md-2" })
+                @Html.TextAreaFor(c => c.Message, new { @class = "form-control", @rows = 12, required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(c => c.Message)</div>
+
+                @*<label for="contactMessage" class="col-md-2">Message:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>*@
+            </div>
+            <button type="submit" class="col-md-offset-4 col-md-4 btn btn-primary">Submit</button>
+
+        }
+
+
+
+        <div class="col-md-6">
+            <img src="~/Images/mapplaceholder.png" class="center" />
+            <p>
+                11 S 5th St
+                <br />Minneapolis, MN 55402
+            </p>
+            <br />
+            <p>
+                <strong>Sales:</strong> 111-111-1111
+                <br /><strong>Services:</strong> 111-111-1111
+            </p>
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}

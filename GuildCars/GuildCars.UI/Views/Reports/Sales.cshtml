@@ -1,0 +1,89 @@
+﻿@model GuildCars.UI.Models.SaleReportAll
+
+@{
+    ViewBag.Title = "Sales";
+
+}
+
+<h2>Sales Report</h2>
+
+<div class="container" id="salesReportSearchBox">
+
+    @using (Html.BeginForm("Sales", "Reports", FormMethod.Post))
+    {
+        <div class="row col-md-12">
+            <h4><strong>Filters</strong></h4>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <div class="well">
+                        <select class="form-control" id="salesReportUser" name="userID">
+                            <option value="All" selected>- All -</option>
+                            @foreach (var user in Model.UsersForDropDown)
+                            {
+                                <option value="@user.UserID">@user.FirstName @user.LastName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="well">
+                        <input type="text"
+                               class="form-control"
+                               id="salesReportFromDate"
+                               name="Sale.fromDate"
+                               placeholder="From Date" />
+                        <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(d => d.fromDate)</div>
+
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="well">
+                        <input type="text"
+                               class="form-control"
+                               id="salesReportToDate"
+                               name="Sale.toDate"
+                               placeholder="To Date" />
+                        <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(d => d.toDate)</div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <div class="well">
+                    <button type="submit"
+                            id="searchButtonSalesReport"
+                            class="btn-block">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+<h4>Search Results</h4>
+<table class="table" id="salesReportSearchResults">
+    <tr> <th>User</th><th>Total Sales</th><th>Total Vehicles</th></tr>
+    @foreach (var saleGroup in Model.SalesByUser)
+    {
+        <tr>
+            <td>@saleGroup.User</td>
+            <td>@saleGroup.TotalSales</td>
+            <td>@saleGroup.TotalVehicles</td>
+        </tr>
+    }
+
+
+</table>
+
+@section scripts {
+
+    <script src="~/JS/home.js"></script>
+}

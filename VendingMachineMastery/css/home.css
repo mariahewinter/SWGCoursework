@@ -1,0 +1,13 @@
+.itemBox {
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: black;
+}
+
+h2 {
+  text-align: center;
+}
+
+.itemContents {
+  text-align: center;
+}

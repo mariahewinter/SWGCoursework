@@ -1,0 +1,25 @@
+public List<Vehicle> Search(VehicleSearchParameters parameters)
+{
+    //var searchVehicles = new List<Vehicle>();
+
+    //if (parameters.Mileage >= 1000)
+    //{
+
+    //}
+    //if (parameters.Mileage <= 1000)
+    //{
+    //    if (parameters.MinPrice.HasValue && parameters.MaxPrice.HasValue && !string.IsNullOrEmpty(parameters.SearchTerm))
+    //    {
+    //        searchVehicles = _vehicles.Where(v => v.SalePrice >= parameters.MinPrice, v => v.SalePrice <= parameters.MaxPrice).Take(20).ToList();
+    //    }
+    //}
+
+    //if (parameters.MinPrice.HasValue)
+    //{
+    //    _vehicles.Where(v => v.SalePrice <= parameters.MaxPrice)
+    //}
+
+    throw new NotImplementedException();
+}
+}
+}

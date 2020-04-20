@@ -1,0 +1,170 @@
+﻿@model GuildCars.UI.Models.DetailsVM
+
+@{
+    ViewBag.Title = "AddVehicle";
+}
+
+<h2>AddVehicle</h2>
+<ul class="list-group" id="errorMessages"></ul>
+<div class="container" id="adminAddVehicle">
+    @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" })) // make sure the encoding type is set correctly!
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => v.Vehicle.MakeID, "Make: ")
+                    <select class="form-control" id="addVehicleMake" name="Vehicle.MakeID" required>
+                        <option value="" selected disabled>Make</option>
+                        @foreach (var make in Model.Makes)
+                        {
+                            <option value="@make.MakeID">@make.MakeName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.MakeID)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => v.Vehicle.ModelID, "Model: ")
+                    <select class="form-control" id="addVehicleModel" name="Vehicle.ModelID" required>
+                        <option value="" selected disabled>Model</option>
+                        @* models will be appended and cleared here via a jquery .change() method in my js*@
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.ModelID)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <label for="addVehicleType">Type: </label>
+                    <select class="form-control" id="addVehicleType">
+                        <option value="" selected>New</option>
+                        <option value="">Used</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.BodyStyleID, "Body Style: ")
+                    <select class="form-control" id="addVehicleBodyStyle" name="Vehicle.BodyStyleID" required>
+                        <option value="" selected disabled>Body Style</option>
+                        @foreach (var bodyStyle in Model.BodyStyles)
+                        {
+                            <option value="@bodyStyle.BodyStyleID">@bodyStyle.BodyStyleName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.BodyStyleID)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.Year, "Year: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.Year, new { @class = "form-control", required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Year)</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.TransmissionID, "Transmission: ")
+                    <select class="form-control" id="addVehicleTransmission" name="Vehicle.TransmissionID" required>
+                        <option value="" selected disabled>Transmission</option>
+                        @foreach (var transmission in Model.Transmission)
+                        {
+                            <option value="@transmission.TransmissionID">@transmission.TransmissionName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.TransmissionID)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.ExteriorColor, "Color: ")
+                    <select class="form-control" id="addVehicleExteriorColor" name="Vehicle.ExteriorColor" required>
+                        <option value="" selected disabled>Exterior Color</option>
+                        @foreach (var color in Model.Colors)
+                        {
+                            <option value="@color.ColorID">@color.ColorName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.ExteriorColor)</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.InteriorColor, "Interior: ")
+                    <select class="form-control" id="addVehicleInteriorColor" name="Vehicle.InteriorColor" required>
+                        <option value="" selected disabled>Interior Color</option>
+                        @foreach (var color in Model.Colors)
+                        {
+                            <option value="@color.ColorID">@color.ColorName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.InteriorColor)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.Mileage, "Mileage: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.Mileage, new { @class = "form-control", required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Mileage)</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.VinNumber, "Vin #: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.VinNumber, new { @class = "form-control", required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.VinNumber)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.MSRP, "MSRP: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.MSRP, new { @class = "form-control", required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.MSRP)</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.SalePrice, "Sale Price: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.SalePrice, new { @class = "form-control", required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.SalePrice)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    @Html.LabelFor(c => Model.Vehicle.Description, "Description: ")
+                    @Html.TextAreaFor(c => Model.Vehicle.Description, new { @class = "form-control", @rows = 12, required = "required" })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Description)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <div class="form-group">
+                        @Html.LabelFor(c => Model.Vehicle.Picture, "Upload Image: ")
+                        @Html.TextBoxFor(c => c.Vehicle.Picture, new { type = "file", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}

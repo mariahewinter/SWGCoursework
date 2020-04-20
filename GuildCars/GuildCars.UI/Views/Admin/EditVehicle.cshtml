@@ -1,0 +1,196 @@
+﻿@model GuildCars.UI.Models.DetailsVM
+
+@{
+    ViewBag.Title = "EditVehicle";
+}
+
+    <h2>EditVehicle</h2>
+<ul class="list-group" id="errorMessages"></ul>
+<div class="container" id="admineditVehicle">
+    @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => v.Vehicle.MakeID, "Make: ")
+                    <select class="form-control" id="editVehicleMake" name="Vehicle.MakeID">
+                        <option value="@Model.Vehicle.MakeID" selected>@Model.Makes.FirstOrDefault(m => m.MakeID == Model.Vehicle.MakeID).MakeName</option>
+                        @foreach (var make in Model.Makes)
+                        {
+                            <option value="@make.MakeID">@make.MakeName</option>
+                        }
+
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.MakeID)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => v.Vehicle.ModelID, "Model: ")
+                    <select class="form-control" id="editVehicleModel" name="Vehicle.ModelID">
+                        <option value="@Model.Vehicle.ModelID" selected>@Model.Models.FirstOrDefault(m => m.ModelID == Model.Vehicle.ModelID).ModelName</option>
+                        @* models will be appended and cleared here via a jquery .change() method in my js*@
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.ModelID)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <label for="editVehicleType">Type: </label>
+                    <select class="form-control" id="editVehicleType">
+                        <option value="" selected>New</option>
+                        <option value="">Used</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.BodyStyleID, "Body Style: ")
+                    <select class="form-control" id="editVehicleBodyStyle" name="Vehicle.BodyStyleID">
+                        <option value="@Model.Vehicle.BodyStyleID" selected>@Model.BodyStyles.FirstOrDefault(m => m.BodyStyleID == Model.Vehicle.BodyStyleID).BodyStyleName</option>
+                        @foreach (var bodyStyle in Model.BodyStyles)
+                        {
+                            <option value="@bodyStyle.BodyStyleID">@bodyStyle.BodyStyleName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.BodyStyleID)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.Year, "Year: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.Year, new { @class = "form-control", @value = Model.Vehicle.Year })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Year)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.TransmissionID, "Transmission: ")
+                    <select class="form-control" id="editVehicleTransmission" name="Vehicle.TransmissionID">
+                        <option value="@Model.Vehicle.TransmissionID" selected>@Model.Transmission.FirstOrDefault(m => m.TransmissionID == Model.Vehicle.TransmissionID).TransmissionName</option>
+                        @foreach (var transmission in Model.Transmission)
+                        {
+                            <option value="@transmission.TransmissionID">@transmission.TransmissionName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.TransmissionID)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.ExteriorColor, "Color: ")
+                    <select class="form-control" id="editVehicleExteriorColor" name="Vehicle.ExteriorColor">
+                        <option value="@Model.Vehicle.ExteriorColor" selected>@Model.Colors.FirstOrDefault(m => m.ColorID == Model.Vehicle.ExteriorColor).ColorName</option>
+                        @foreach (var color in Model.Colors)
+                        {
+                            <option value="@color.ColorID">@color.ColorName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.ExteriorColor)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.InteriorColor, "Interior: ")
+                    <select class="form-control" id="editVehicleInteriorColor" name="Vehicle.InteriorColor">
+                        <option value="@Model.Vehicle.InteriorColor" selected>@Model.Colors.FirstOrDefault(m => m.ColorID == Model.Vehicle.InteriorColor).ColorName</option>
+                        @foreach (var color in Model.Colors)
+                        {
+                            <option value="@color.ColorID">@color.ColorName</option>
+                        }
+                    </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.InteriorColor)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.Mileage, "Mileage: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.Mileage, new { @class = "form-control", @value = Model.Vehicle.Mileage })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Mileage)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.VinNumber, "Vin #: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.VinNumber, new { @class = "form-control", @value = Model.Vehicle.VinNumber })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.VinNumber)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.MSRP, "MSRP: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.MSRP, new { @class = "form-control", @value = Model.Vehicle.MSRP })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.MSRP)</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.SalePrice, "Sale Price: ")
+                    @Html.TextBoxFor(v => Model.Vehicle.SalePrice, new { @class = "form-control", @value = Model.Vehicle.SalePrice })
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.SalePrice)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    @Html.LabelFor(c => Model.Vehicle.Description, "Description: ")
+                    @Html.TextAreaFor(c => Model.Vehicle.Description, new { @class = "form-control", @rows = 12, @value = Model.Vehicle.Description, required = "required" });
+                    <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Description)</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">14 PICTURE UPLOAD</div>
+                <span class="text-danger">@Html.ValidationMessageFor(v => v.Vehicle.Picture)</span>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    @Html.LabelFor(v => Model.Vehicle.IsFeatured, "Feature this vehicle: ")
+                    @Html.CheckBoxFor(v => Model.Vehicle.IsFeatured, new { @class = "form-control", })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <button type="button" class="btn btn-primary" onclick="deleteVehicleAlert('@Model.Vehicle.VinNumber')">Delete</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}

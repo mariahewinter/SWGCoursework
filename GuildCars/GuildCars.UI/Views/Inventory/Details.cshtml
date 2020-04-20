@@ -1,0 +1,79 @@
+﻿@model GuildCars.UI.Models.DetailsVM
+
+@{
+    ViewBag.Title = "Details";
+    var IsPurchased = Model.Vehicle.IsPurchased;
+}
+
+<h2>Vehicle Details</h2>
+
+<div class="container" id="detailsDisplay">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="well">
+                @Model.Vehicle.Year @Model.Makes.FirstOrDefault(m => m.MakeID == Model.Vehicle.MakeID).MakeName @Model.Models.FirstOrDefault(m => m.ModelID == Model.Vehicle.ModelID).ModelName
+                <img src="/Images/@Model.Vehicle.Picture" />
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well"><strong>Body Style: </strong>@Model.BodyStyles.FirstOrDefault(m => m.BodyStyleID == Model.Vehicle.BodyStyleID).BodyStyleName</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well"><strong>Interior: </strong>@Model.Colors.FirstOrDefault(m => m.ColorID == Model.Vehicle.InteriorColor).ColorName</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well"><strong>Sale Price: </strong>$@Model.Vehicle.SalePrice</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well"><strong>Trans: </strong>@Model.Transmission.FirstOrDefault(m => m.TransmissionID == Model.Vehicle.TransmissionID).TransmissionName</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well"><strong>Mileage: </strong>@Model.Vehicle.Mileage</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well"><strong>MSRP: </strong>$@Model.Vehicle.MSRP</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well"><strong>Color: </strong>@Model.Colors.FirstOrDefault(m => m.ColorID == Model.Vehicle.ExteriorColor).ColorName</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well"><strong>Vin #: </strong>@Model.Vehicle.VinNumber</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <strong>Description: </strong>@Model.Vehicle.Description
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-8 col-md-4">
+                    <div class="well">
+                        @if (IsPurchased == false)
+                        {
+                            <button type="button" class="btn-block btn-primary" onclick="contactUsView('@Model.Vehicle.VinNumber')">Contact Us</button>
+
+                        }
+                        else
+                        {
+                            <button type="button" class="btn-block btn-primary">Unavailable - Sold</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}

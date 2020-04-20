@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vending Machine</title>
+    <!--Bootstrap core CSS -->
+    <link href="css/bootstrap.css"
+          rel="stylesheet">
+    <link href="css/home.css"
+          rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <div class="row" id="vending-machine-header">
+            <h1 class="text-center"> Vending Machine</h1>
+            <hr>
+        </div>
+
+        <div class="container">
+            <!-- contains both the item display and the forms-->
+
+            <div class="row col-md-8" id="itemsDisplay">
+                <!-- begin item display-->
+                <!-- This is where my itemBox(s) will be appended -->
+            </div> <!-- end item display -->
+            <!-- HERE IS WHERE I WILL PUT THE FORMS DIV -->
+            <div class="row col-md-4" id="itemForms">
+
+                <!-- T O T A L $ I N  -->
+                <div id="totalIn">
+                    <h2 id="totalIn-header">Total $ In</h2>
+
+                    <form class="form-horizontal" roll="form">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="money-added"
+                                       value="$0.00" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-4">
+                                <button type="button"
+                                        id="add-dollar"
+                                        class="btn btn-default"
+                                        onclick="addDollar()">
+                                    Add Dollar
+                                </button>
+                            </div>
+
+                            <div class="col-md-4">
+                                <button type="button"
+                                        id="add-quarter"
+                                        class="btn btn-default"
+                                        onclick="addQuarter()">
+                                    Add Quarter
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-4">
+                                <button type="button"
+                                        id="add-dime"
+                                        class="btn btn-default"
+                                        onclick="addDime()">
+                                    Add Dime
+                                </button>
+                            </div>
+
+                            <div class="col-md-4">
+                                <button type="button"
+                                        id="add-nickel"
+                                        class="btn btn-default"
+                                        onclick="addnickel()">
+                                    Add Nickel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr width="90%">
+
+                </div>
+
+                <!-- M E S S A G E S -->
+                <div id="messagesDiv">
+                    <h2 id="messages-header">Messages</h2>
+
+                    <form class="form-horizontal" roll="form">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="display-messages" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-10">
+                          <label for="item-id-display" class="col-md-5 control-label">
+                            Item:
+                          </label>
+                          <div class="col-md-5">
+                            <input type="text"
+                                   class="form-control"
+                                   id="item-id-display" readonly>
+                                 </div>
+                               </div>
+
+                            <div class="col-md-offset-4">
+                                <button type="button"
+                                        id="make-purchase"
+                                        class="btn btn-default"
+                                        onclick="makePurchase()">
+                                    Make Purchase
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr width="90%">
+
+                <!-- C H A N G E RETURN -->
+                <div id="change">
+                    <h2 id="change-header">Change</h2>
+
+                    <form class="form-horizontal" roll="form">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="change-return-display" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-4">
+                                <button type="button"
+                                        id="change-return"
+                                        class="btn btn-default"
+                                        onclick="changeReturn()">
+                                    Change Return
+                                </button>
+                            </div>
+                          </div>
+                        </form>
+
+            </div>
+        </div>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+</body>
+</html>

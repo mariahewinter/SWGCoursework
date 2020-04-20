@@ -1,0 +1,76 @@
+﻿@model GuildCars.UI.Models.AddModel
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2>Models</h2>
+
+<div class="container">
+    <div class="row col-md-12">
+        @using (Html.BeginForm("Models", "Admin", FormMethod.Post, new { @class = "well col-md-12", role = "form" }))
+        {
+            <div class="form-group col-md-6">
+                @Html.HiddenFor(m => m.ModelID)
+                @Html.HiddenFor(m => m.DateAdded)
+                @Html.HiddenFor(m => m.UserID)
+
+                @Html.LabelFor(m => m.ModelName, "New Model:")
+                @Html.TextBoxFor(m => m.ModelName, new { @class = "form-control", required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(m => m.ModelName)</div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(m => m.MakeID, "Make: ")
+                <select class="form-control" name="MakeID">
+                    <option value="" selected disabled>Make</option>
+                    @foreach (var make in Model.AdminMakes)
+                    {
+                      <option value="@make.MakeID">@make.MakeName</option>
+                    }
+                </select>
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.MakeID)</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        }
+
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Make Name
+        </th>
+        <th>
+           Model Name
+        </th>
+        <th>
+            Date Added
+        </th>
+        <th>
+            User
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.AdminModels)
+    {
+        <tr>
+            <td>
+                @Model.AdminMakes.FirstOrDefault(m => m.MakeID == item.MakeID).MakeName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @item.DateAdded.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+        </tr>
+    }
+
+</table>

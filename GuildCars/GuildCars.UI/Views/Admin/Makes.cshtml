@@ -1,0 +1,53 @@
+﻿@model GuildCars.UI.Models.AddMake
+
+<h2>Makes</h2>
+<div class="container">
+    <div class="row col-md-12">
+        @using (Html.BeginForm("Makes", "Admin", FormMethod.Post, new { @class = "well col-md-12", role = "form" }))
+        {
+            <div class="form-group col-md-12">
+                @Html.HiddenFor(m => m.MakeID)
+                @Html.HiddenFor(m => m.DateAdded)
+                @Html.HiddenFor(m => m.UserID)
+                @Html.LabelFor(m => m.MakeName, "Make:", new { @class = "col-md-2" })
+                @Html.TextBoxFor(m => m.MakeName, new { @class = "form-control col-md-10", required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(m => m.MakeName)</div>
+            </div>
+
+            <button type="submit" class="col-md-offset-2 btn btn-primary">Submit</button>
+
+        }
+
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MakeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.AdminMakes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MakeName)
+            </td>
+            <td>
+                @item.DateAdded.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+        </tr>
+    }
+
+</table>

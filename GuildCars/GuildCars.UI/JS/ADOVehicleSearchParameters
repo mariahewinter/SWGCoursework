@@ -1,0 +1,81 @@
+public List<Vehicle> Search(VehicleSearchParameters parameters)
+{
+    List<Vehicle> vehicles = new List<Vehicle>();
+
+    using (SqlConnection conn = new SqlConnection(Settings.GetConnectionString()))
+    {
+        string query = "SELECT TOP 20 * FROM Vehicle WHERE 1 = 1 ";
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = conn;
+
+        if(parameters.Mileage <= 1000)
+        {
+            query += $"AND Mileage <= @Mileage";
+            cmd.Parameters.AddWithValue("@Mileage", parameters.Mileage);
+
+        }
+
+        if(parameters.MinPrice.HasValue)
+        {
+            query += $"AND SalePrice >= @MinPrice ";
+            cmd.Parameters.AddWithValue("@MinPrice", parameters.MinPrice);
+        }
+
+        if (parameters.MaxPrice.HasValue)
+        {
+            query += $"AND SalePrice <= @MaxPrice ";
+            cmd.Parameters.AddWithValue("@MaxPrice", parameters.MaxPrice);
+        }
+
+        //if (!string.IsNullOrEmpty(parameters.SearchTerm))
+        //{
+        //    query += $"AND Make LIKE @Make ";
+        //    cmd.Parameters.AddWithValue("@Make", parameters.SearchTerm + '%');
+        //}
+
+        //if (!string.IsNullOrEmpty(parameters.SearchTerm))
+        //{
+        //    query += $"AND Model LIKE @Model ";
+        //    cmd.Parameters.AddWithValue("@Model", parameters.SearchTerm + '%');
+        //}
+
+        //if (!string.IsNullOrEmpty(parameters.SearchTerm))
+        //{
+        //    query += $"AND Year LIKE @Year ";
+        //    cmd.Parameters.AddWithValue("@Year", parameters.SearchTerm + '%');
+        //}
+
+        cmd.CommandText = query;
+        conn.Open();
+
+        using (SqlDataReader dr = cmd.ExecuteReader())
+        {
+            while (dr.Read())
+            {
+                Vehicle currentRow = new Vehicle();
+                currentRow.VinNumber = dr["VinNumber"].ToString();
+                currentRow.ModelID = (int)dr["ModelID"];
+                currentRow.MakeID = (int)dr["MakeID"];
+                currentRow.BodyStyleID = (int)dr["BodyStyleID"];
+                currentRow.TransmissionID = (int)dr["TransmissionID"];
+                currentRow.ExteriorColor = (int)dr["ExteriorColor"];
+                currentRow.InteriorColor = (int)dr["InteriorColor"];
+                currentRow.Year = dr["Year"].ToString();
+                currentRow.Mileage = (int)dr["Mileage"];
+                currentRow.MSRP = (decimal)dr["MSRP"];
+                currentRow.SalePrice = (decimal)dr["SalePrice"];
+                currentRow.Description = dr["Description"].ToString();
+                currentRow.Picture = dr["Picture"].ToString();
+                currentRow.IsFeatured = (bool)dr["IsFeatured"];
+                currentRow.IsPurchased = (bool)dr["IsPurchased"];
+
+                vehicles.Add(currentRow);
+            }
+        }
+
+    }
+
+    return vehicles;
+}
+}
+}

@@ -1,0 +1,51 @@
+﻿@model GuildCars.UI.Models.SpecialVM
+
+@{
+    ViewBag.Title = "Specials";
+}
+
+<h2>Specials</h2>
+
+<div class="container">
+    <div class="row col-md-12">
+        @using (Html.BeginForm("Specials", "Admin", FormMethod.Post, new { @class = "well col-md-12", role = "form" }))
+        {
+            <div class="form-group col-md-12">
+                @Html.LabelFor(s => s.SpecialTitle, "Title:", new { @class = "col-md-2" })
+                @Html.TextBoxFor(s => s.SpecialTitle, new { @class = "form-control col-md-10", required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(s => s.SpecialTitle)</div>
+            </div>
+
+            <div class="form-group col-md-12">
+                @Html.LabelFor(s => s.SpecialDescription, "Description:", new { @class = "col-md-2" })
+                @Html.TextAreaFor(s => s.SpecialDescription, new { @class = "form-control", @rows = 12, required = "required" })
+                <div class="text-danger col-md-12 col-md-offset-2">@Html.ValidationMessageFor(s => s.SpecialDescription)</div>
+            </div>
+
+            <button type="submit" class="col-md-offset-2 btn btn-primary">Submit</button>
+
+        }
+
+    </div>
+</div>
+
+<hr />
+
+<div class="container" id="specialsAdmin">
+    @foreach (var special in Model.AdminSpecials)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <h3>@special.SpecialTitle</h3>
+                    <p> @special.SpecialDescription</p>
+                    <button type="button" class="btn btn-primary" onclick="deleteSpecialAlert(@special.SpecialID)">Delete</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}

@@ -1,0 +1,100 @@
+﻿@model GuildCars.UI.Models.InventoryReportViewModel
+
+@{
+    ViewBag.Title = "Inventory";
+
+}
+
+<h2>Inventory Report</h2>
+
+<h4>New Vehicles</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Year
+        </th>
+        <th>
+            Make
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Count
+        </th>
+        <th>
+            Stock Value
+        </th>
+    </tr>
+
+    @foreach (var vehicleGroup in Model.NewVehicles)
+    {
+            <tr>
+                <td>
+                    @vehicleGroup.Year
+                </td>
+                <td>
+                    @vehicleGroup.Make
+                </td>
+                <td>
+                    @vehicleGroup.Model
+                </td>
+                <td>
+                    @vehicleGroup.Count
+                </td>
+                <td>
+                    $@vehicleGroup.StockValue
+                </td>
+            </tr>
+    }
+
+</table>
+
+<h4>Used Vehicles</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Year
+        </th>
+        <th>
+            Make
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Count
+        </th>
+        <th>
+            Stock Value
+        </th>
+    </tr>
+
+    @foreach (var vehicleGroup in Model.UsedVehicles)
+    {
+        <tr>
+            <td>
+                @vehicleGroup.Year
+            </td>
+            <td>
+                @vehicleGroup.Make
+            </td>
+            <td>
+                @vehicleGroup.Model
+            </td>
+            <td>
+                @vehicleGroup.Count
+            </td>
+            <td>
+                $@vehicleGroup.StockValue
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts {
+    <script src="~/JS/home.js"></script>
+}
